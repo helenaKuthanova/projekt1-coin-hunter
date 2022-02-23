@@ -5,55 +5,84 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 }
 */
 
+let panacek = document.getElementById("panacek");
+let panacekX = 400;
+let panacekY = 300;
+let posunPanacka = 10;
 
-// sem začni psát svůj program
-let panacek = document.getElementById("panacek")
-let x = 400;
-let y = 300;
-let posunPanacka = 10
+let mince = document.getElementById("mince");
+let koeficientMince = 300
+let minceX = Math.floor(Math.random() * koeficientMince);
+let minceY = Math.floor(Math.random() * koeficientMince);
+
+let pocitadlo = 0
+
+panacekSirka = 50
+panacek.style.width = panacekSirka + "px"
+panacekVyska = 50
+panacek.style.height = panacekVyska + "px"
+minceSirka = 30
+mince.style.width = minceSirka + "px"
+minceVyska = 30
+mince.style.height = minceVyska + "px"
 
 // výchozí postavení
-panacek.style.left = x + "px";
-panacek.style.top = y + "px";
+panacek.style.left = panacekX + "px";
+panacek.style.top = panacekY + "px";
+mince.style.left = minceX + "px";
+mince.style.top = minceY + "px";
 
 // pohyb panáčka
 // zjistím key klávesy: ArrowDown, ArrowUp, ArrowRight, ArrowLeft
 function stiskKlavesy(udalost) {
     kodKlavesy = udalost.key
-    console.log(kodKlavesy)
 
     if (kodKlavesy === "ArrowDown") {
-        y += posunPanacka;
-        if (y < window.innerHeight) {
-            panacek.style.left = x + "px";
-            panacek.style.top = y + "px";
+        panacekY += posunPanacka;
+        if (panacekY < window.innerHeight) {
+            panacek.style.left = panacekX + "px";
+            panacek.style.top = panacekY + "px";
         }
     }
 
     if (kodKlavesy === "ArrowUp") {
-        y -= posunPanacka;
-        if (y > 0) {
-            panacek.style.left = x + "px";
-            panacek.style.top = y + "px";
+        panacekY -= posunPanacka;
+        if (panacekY > 0) {
+            panacek.style.left = panacekX + "px";
+            panacek.style.top = panacekY + "px";
         }
     }
 
     if (kodKlavesy === "ArrowRight") {
-        x += posunPanacka;
-        if (x < window.innerWidth) {
-            panacek.style.left = x + "px";
-            panacek.style.top = y + "px";
+        panacekX += posunPanacka;
+        if (panacekX < window.innerWidth) {
+            panacek.style.left = panacekX + "px";
+            panacek.style.top = panacekY + "px";
         }
     }
 
     if (kodKlavesy === "ArrowLeft") {
-        x -= posunPanacka;
-        if (x > 0) {
-            panacek.style.left = x + "px";
-            panacek.style.top = y + "px";
+        panacekX -= posunPanacka;
+        if (panacekX > 0) {
+            panacek.style.left = panacekX + "px";
+            panacek.style.top = panacekY + "px";
         }
     }
 
+    // parseInt() pro převod na integer?? CSS vlastnost je string
 
+    if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
+        // panacek a mince se prekryvaji
+        minceX = Math.floor(Math.random() * koeficientMince);
+        minceY = Math.floor(Math.random() * koeficientMince);
+        mince.style.left = minceX + "px";
+        mince.style.top = minceY + "px";
+
+        pocitadlo++
+        console.log(pocitadlo)
+
+        if (pocitadlo >= 5) {
+            console.log("Vyhrál jsi! Konec hry.")
+        }
+    }
 }
-
