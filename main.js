@@ -16,6 +16,10 @@ let minceX = Math.floor(Math.random() * koeficientMince);
 let minceY = Math.floor(Math.random() * koeficientMince);
 
 let pocitadlo = 0
+let ukazatelSkore = document.getElementById("score")
+
+let zvukMince = document.getElementById("zvukmince")
+let fanfara = document.getElementById("zvukfanfara")
 
 panacekSirka = 50
 panacek.style.width = panacekSirka + "px"
@@ -79,10 +83,17 @@ function stiskKlavesy(udalost) {
         mince.style.top = minceY + "px";
 
         pocitadlo++
+        if (pocitadlo < 5) {
+            zvukMince.play()
+        }
         console.log(pocitadlo)
+        ukazatelSkore.textContent = pocitadlo
 
         if (pocitadlo >= 5) {
             console.log("Vyhrál jsi! Konec hry.")
+            ukazatelSkore.textContent = "Vítěz!"
+            mince.style.visibility = "hidden"  // mince už se neobjeví
+            fanfara.play()
         }
     }
 }
