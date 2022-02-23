@@ -24,26 +24,36 @@ function stiskKlavesy(udalost) {
 
     if (kodKlavesy === "ArrowDown") {
         y += posunPanacka;
-        panacek.style.left = x + "px";
-        panacek.style.top = y + "px";
+        if (y < window.innerHeight) {
+            panacek.style.left = x + "px";
+            panacek.style.top = y + "px";
+        }
     }
 
     if (kodKlavesy === "ArrowUp") {
         y -= posunPanacka;
-        panacek.style.left = x + "px";
-        panacek.style.top = y + "px";
-    }
-
-    if (kodKlavesy === "ArrowLeft") {
-        x -= posunPanacka;
-        panacek.style.left = x + "px";
-        panacek.style.top = y + "px";
+        if (y > 0) {
+            panacek.style.left = x + "px";
+            panacek.style.top = y + "px";
+        }
     }
 
     if (kodKlavesy === "ArrowRight") {
         x += posunPanacka;
-        panacek.style.left = x + "px";
-        panacek.style.top = y + "px";
+        if (x < window.innerWidth) {
+            panacek.style.left = x + "px";
+            panacek.style.top = y + "px";
+        }
     }
+
+    if (kodKlavesy === "ArrowLeft") {
+        x -= posunPanacka;
+        if (x > 0) {
+            panacek.style.left = x + "px";
+            panacek.style.top = y + "px";
+        }
+    }
+
+
 }
 
