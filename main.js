@@ -18,7 +18,7 @@ let fanfara = document.getElementById("zvukfanfara");
 // rozměry obrázků panáčka a mince
 panacekSirka = 50;
 panacek.style.width = panacekSirka + "px";
-panacekVyska = 60;
+panacekVyska = 55;
 panacek.style.height = panacekVyska + "px";
 minceSirka = 30;
 mince.style.width = minceSirka + "px";
