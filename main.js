@@ -32,7 +32,7 @@ mince.style.left = minceX + "px";
 mince.style.top = minceY + "px";
 
 // pohyb panáčka - změní se obrázek, omezení šířkou/výškou okna
-function stiskKlavesy(udalost) {
+function hra(udalost) {
     // stisknutá klávesa
     kodKlavesy = udalost.key;
 
