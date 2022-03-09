@@ -48,7 +48,10 @@ function novaMince() {
 }
 
 function kolizePanacka() {
-    //
+    // panáček a mince se překrývají
+    if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
+        return true
+    }
 }
 
 function stavPocitadla() {
@@ -103,17 +106,16 @@ function priStisknutiKlavesy(udalost) {
         }
     }
 
-    // pokud se obrázek panáčka a mince překrývají
-    if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
+    if (kolizePanacka()) {
         novaMince()
         let pocitadlo = stavPocitadla()
 
-        if (pocitadlo < 5) {
-            zvukMince.play();
+    if (pocitadlo < 5) {
+        zvukMince.play();
         }
 
-        if (pocitadlo = 5) {
-            vitez()
+    if (pocitadlo === 5) {
+        vitez()
         }
     }
 }
