@@ -33,6 +33,12 @@ function priNacteniStranky() {
     mince.style.top = minceY + "px";
 }
 
+function pohybPanacka() {
+    // posunutí panáčka na novou pozici
+    panacek.style.left = panacekX + "px";
+    panacek.style.top = panacekY + "px";
+}
+
 // pohyb panáčka - změní se obrázek, omezení šířkou/výškou okna
 function priStisknutiKlavesy(udalost) {
     // stisknutá klávesa
@@ -42,8 +48,7 @@ function priStisknutiKlavesy(udalost) {
         panacek.src="obrazky/panacek.png";
         panacekY += posunPanacka;
         if (panacekY < window.innerHeight) {
-            panacek.style.left = panacekX + "px";
-            panacek.style.top = panacekY + "px";
+            pohybPanacka()
         }
     }
 
@@ -51,8 +56,7 @@ function priStisknutiKlavesy(udalost) {
         panacek.src="obrazky/panacek-nahoru.png";
         panacekY -= posunPanacka;
         if (panacekY > 0) {
-            panacek.style.left = panacekX + "px";
-            panacek.style.top = panacekY + "px";
+            pohybPanacka()
         }
     }
 
@@ -60,8 +64,7 @@ function priStisknutiKlavesy(udalost) {
         panacek.src="obrazky/panacek-vpravo.png";
         panacekX += posunPanacka;
         if (panacekX < window.innerWidth) {
-            panacek.style.left = panacekX + "px";
-            panacek.style.top = panacekY + "px";
+            pohybPanacka()
         }
     }
 
@@ -69,8 +72,7 @@ function priStisknutiKlavesy(udalost) {
         panacek.src="obrazky/panacek-vlevo.png";
         panacekX -= posunPanacka;
         if (panacekX > 0) {
-            panacek.style.left = panacekX + "px";
-            panacek.style.top = panacekY + "px";
+            pohybPanacka()
         }
     }
 
