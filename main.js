@@ -39,6 +39,14 @@ function pohybPanacka() {
     panacek.style.top = panacekY + "px";
 }
 
+function novaMince() {
+    // nová pozice mince
+    minceX = Math.floor(Math.random() * window.innerWidth);
+    minceY = Math.floor(Math.random() * window.innerHeight);
+    mince.style.left = minceX + "px";
+    mince.style.top = minceY + "px";
+}
+
 // pohyb panáčka - změní se obrázek, omezení šířkou/výškou okna
 function priStisknutiKlavesy(udalost) {
     // stisknutá klávesa
@@ -78,11 +86,7 @@ function priStisknutiKlavesy(udalost) {
 
     // pokud se obrázek panáčka a mince překrývají
     if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
-        // nová pozice mince
-        minceX = Math.floor(Math.random() * window.innerWidth);
-        minceY = Math.floor(Math.random() * window.innerHeight);
-        mince.style.left = minceX + "px";
-        mince.style.top = minceY + "px";
+        novaMince()
 
         // zvýší se skóre
         // 1.-4. mince => cink + změna elementu skóre
