@@ -1,7 +1,7 @@
 // panáček a jeho pozice
 let panacek = document.getElementById("panacek");
-let panacekX = 400;
-let panacekY = 300;
+let panacekX = window.innerWidth / 2;
+let panacekY = window.innerHeight / 2;
 let posunPanacka = 10;
 
 // mince a její pozice
@@ -25,14 +25,16 @@ mince.style.width = minceSirka + "px";
 minceVyska = 30;
 mince.style.height = minceVyska + "px";
 
-// výchozí postavení panáčka a mince
-panacek.style.left = panacekX + "px";
-panacek.style.top = panacekY + "px";
-mince.style.left = minceX + "px";
-mince.style.top = minceY + "px";
+function priNacteniStranky() {
+    // výchozí postavení panáčka a mince
+    panacek.style.left = panacekX + "px";
+    panacek.style.top = panacekY + "px";
+    mince.style.left = minceX + "px";
+    mince.style.top = minceY + "px";
+}
 
 // pohyb panáčka - změní se obrázek, omezení šířkou/výškou okna
-function hra(udalost) {
+function priStisknutiKlavesy(udalost) {
     // stisknutá klávesa
     kodKlavesy = udalost.key;
 
