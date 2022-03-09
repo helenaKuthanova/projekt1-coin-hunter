@@ -47,7 +47,26 @@ function novaMince() {
     mince.style.top = minceY + "px";
 }
 
-// pohyb panáčka - změní se obrázek, omezení šířkou/výškou okna
+function kolizePanacka() {
+    //
+}
+
+function stavPocitadla() {
+    // cink + změna elementu skóre
+    pocitadlo++;
+    ukazatelSkore.textContent = pocitadlo;
+    return pocitadlo
+}
+
+function vitez() {
+    // 5. mince => vítěz + fanfára + mince zmizí
+    console.log("Vyhrál jsi! Konec hry.");
+    ukazatelSkore.textContent = "Vítěz!";
+    mince.style.visibility = "hidden";  // mince už se neobjeví
+    fanfara.play();
+}
+
+// mění se obrázek, omezení šířkou/výškou okna
 function priStisknutiKlavesy(udalost) {
     // stisknutá klávesa
     kodKlavesy = udalost.key;
@@ -87,22 +106,14 @@ function priStisknutiKlavesy(udalost) {
     // pokud se obrázek panáčka a mince překrývají
     if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
         novaMince()
+        let pocitadlo = stavPocitadla()
 
-        // zvýší se skóre
-        // 1.-4. mince => cink + změna elementu skóre
-        pocitadlo++
         if (pocitadlo < 5) {
             zvukMince.play();
         }
-        console.log(pocitadlo);
-        ukazatelSkore.textContent = pocitadlo;
 
-        // 5. mince => vítěz + fanfára + mince zmizí
-        if (pocitadlo >= 5) {
-            console.log("Vyhrál jsi! Konec hry.");
-            ukazatelSkore.textContent = "Vítěz!";
-            mince.style.visibility = "hidden";  // mince už se neobjeví
-            fanfara.play();
+        if (pocitadlo = 5) {
+            vitez()
         }
     }
 }
